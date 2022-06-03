@@ -1,0 +1,24 @@
+{
+  "name": "cypress-pom-example",
+  "version": "1.0.0",
+  "description": "An example of implementation of Cypress with Page Object Model",
+  "scripts": {
+    "cy:verify": "cypress verify",
+    "cy:open": "cypress open"
+  },
+  "dependencies": {
+    "cypress": "^10.0.2"
+  },
+  "author": "kristenjoie",
+  "license": "MIT",
+  "main": "cypress.config.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kristenjoie/cypress-pom-example.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kristenjoie/cypress-pom-example/issues"
+  },
+  "homepage": "https://github.com/kristenjoie/cypress-pom-example#readme"
+}
