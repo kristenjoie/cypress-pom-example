@@ -3,5 +3,5 @@ node_modules
 
 # Cypress
 cypress/downloads
-cypress/video
-cypress/screenshot
+cypress/videos
+cypress/screenshots
