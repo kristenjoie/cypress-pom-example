@@ -6,7 +6,9 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     env: {
-      url: 'https://example.cypress.io'
+        url: 'https://example.cypress.io',
+
+        testsuiteID: "default"
     }
   }
 });

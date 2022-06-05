@@ -1,0 +1,29 @@
+[
+  {
+    "testsuiteID": "default",
+    "name": "default config",
+    "data": [
+      {
+        "name" : "standard_user",
+        "mail" : "fake@mail.com",
+        "pwd" : "p@ssw0rd"
+      }
+    ]
+  },
+  {
+    "testsuiteID": "smoke",
+    "name": "smoke config",
+    "data": [
+      {
+        "name" : "standard_user",
+        "mail" : "fake@mail.com",
+        "pwd" : "p@ssw0rd"
+      },
+      {
+        "name" : "second_user",
+        "mail" : "fake2@mail.com",
+        "pwd" : "p@ssw0rd2"
+      }
+    ]
+  }
+]

@@ -22,6 +22,14 @@ npm run cy:open
 ```
 npm run cy:test:po
 ```
+- To run tests created dynamically from a fixture file, more explanation [here](#anchor-dynamic-test):
+```
+npm run cy:test:dy
+```
+or
+```
+npm run cy:test:dy:smoke
+```
 
 ## 📖 Code Structure
 
@@ -44,9 +52,42 @@ module.exports = defineConfig({
 **cypress/e2e/\***  
 This folder contains all spec file for end-to-end tests.
 
-**cypress/support/page\***  
+**cypress/support/page/\***  
 Contains page object files. Each file contains the description of a specific page of the app to be tested.
 There a is '*special*' file, `'base.page.js'` which is a description of all the common actions available to any other page of the app. In our example, all actions related the navbar header.
+
+**cypress/fixures/\***  
+Fixtures files use to define data set used
+
+## 🔧 Dynamic Test from fixture<a id='anchor-dynamic-test'></a>
+Often we need to use the same test but with different data. To avoid to write repetitive code, we use a [fixture file](cypress/fixtures/dynamic.json) to define data. Then we import it in the [spec file](cypress/e2e/dy-spec.cy.js) using:  
+```javascript
+const suites = require('../fixtures/dynamic.json')
+```
+
+We can then apply a filter on `testsuiteID`
+```javascript
+suites.forEach((suite) => {
+  if (suite.testsuiteID === Cypress.env('testsuiteID')) {
+    context(`Test for testsuite '${suite.testsuiteID}'`, () => {
+      // implement test here
+    })
+  })
+})
+```
+`testsuiteID` -is set in the `'cypress.config.js'` file but can also be set through the command line with option `-env testsuiteID=smoke`
+
+Finally, for the suite we create a test for each data.
+```javascript
+suite.data.forEach((testcase) => {
+  it(`login for user ${testcase.name}`, () => {
+    queryingPage.visit()
+    queryingPage.getNameField().type(testcase.name)
+    queryingPage.getMailField().type(testcase.mail)
+    queryingPage.getPwdField().type(testcase.pwd)
+  })
+})
+```
 
 ## 🔗 Links
 
